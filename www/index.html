@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Аренда лучших самолетов</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header>
+    <div id="logo" onclick="slowScroll('#top')">
+      <span>BusinessAir</span>
+    </div>
+    <div id="about">
+      <a href="#" title="Возможности" onclick="slowScroll('#main')">Возможности</a>
+      <a href="#" onclick="slowScroll('#overview')" title="Преимущества">Преимущества</a>
+      <a href="#" onclick="slowScroll('#contacts')" title="Контакты">Контакты</a>
+      <a href="#" onclick="slowScroll('#faq')" title="Ответы на вопросы">FAQ</a>
+    </div>
+  </header>
+
+  <div id="top">
+    <h1>Арендуй частный самолет</h1>
+    <h3>и посмотри на этот мир!</h3>
+  </div>
+
+  <div id="main">
+    <div class="intro">
+      <h2>Выбирайте нас!</h2>
+      <span>Мы имеем договоренности со всеми континентами, где всегда рады предоставить место для посадки наших самолетов!</span>
+    </div>
+    <div class="text">
+      <span>С 2012 года наша авиакомпания начала захватывать рынок. И вот уже в 2021 году мы с радостью готовы представить широкий выбор самолетов и мест, куда они могут долететь!</span>
+    </div>
+  </div>
+
+  <div id="overview">
+    <h2>Преимущества</h2>
+    <h4>с нами всегда безопасней, быстрее и качественней</h4>
+
+    <style type="text/css">
+        /* Собственно сам слайдер */
+    .slider{
+        max-width: 80%;
+        position: relative;
+
+        height: 300px;
+        margin-bottom: 130px;
+        margin: auto;
+        }
+        /* Картинка мастабируется по отношению к родительскому элементу */
+        .slider .item img {
+        object-fit: cover;
+        width: 100%;
+        height: 300px;
+        }
+        /* Анимация слайдов */
+
+        .slider .item {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+        from {
+        opacity: .4
+        }
+        to {
+        opacity: 1
+        }
+        }
+
+        @keyframes fade {
+        from {
+        opacity: .4
+        }
+        to {
+        opacity: 1
+        }
+        }
+    </style>
+
+    <div class="slider">
+      <div class="item">
+      <img src="img/1.jpg" class="slide showing" height="1000">
+      </div>
+      <div class="item">
+      <img src="img/2.jpg" class="slide showing" height="1000">
+      </div>
+      <div class="item">
+      <img src="img/3.jpg" class="slide showing" height="1000">
+      </div>
+      <div class="item">
+      <img src="img/4.jpg" class="slide showing" height="1000">
+      </div>
+      <div class="item">
+      <img src="img/5.jpg" class="slide showing" height="1000">
+      </div>
+    </div>
+    <br>
+
+    <div class="slider-dots">
+        <span class="slider-dots_item" onclick="currentSlide(1)"></span>
+        <span class="slider-dots_item" onclick="currentSlide(2)"></span>
+        <span class="slider-dots_item" onclick="currentSlide(3)"></span>
+    </div>
+
+
+    <script type="text/javascript">
+        "use strict";
+
+        /* Индекс слайда по умолчанию */
+        var slideIndex = 1;
+        var timer = null;
+        showSlides(slideIndex);
+
+        afterTime(4500); // Устанавливаем считчик...
+        /* Функция увеличивает индекс на 1, показывает следующй слайд*/
+        function plusSlide() {
+            showSlides(slideIndex += 1);
+        }
+
+        /* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
+        function minusSlide() {
+            showSlides(slideIndex -= 1);
+        }
+
+        /* Устанавливает текущий слайд */
+        function currentSlide(n) {
+            console.log(n);
+            showSlides(slideIndex = n);
+        }
+
+        /* Основная функция сладера */
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("item");
+            var dots = document.getElementsByClassName("slider-dots_item");
+
+            if (n && n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n && n < 1) {
+                slideIndex = slides.length;
+            }
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+                // dots[i].className = dots[i].className.replace("active", "");
+            }
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            if (slideIndex <= 0) slideIndex = slides.length; // проверяем на кнопке back
+
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].classList.add("active");
+            // dots[slideIndex - 1].className += " active";
+
+            afterTime(4000); // Сбрасываем и устанавливаем счетчик...
+        }
+
+        function afterTime(delay) { // Сам счетчик..
+            clearInterval(timer);
+            timer = setInterval(() => {
+                slideIndex++;
+                showSlides();
+            }, delay);
+        }
+
+    </script>
+      <span>У нас только высококвалифицированные пилоты, новые самолеты и лучшая служба поддержки! </span>
+    </div>
+            <div class="container4" id="contacts">
+              <div class="form">
+                <form class="contact_form" action="mailto:bbrokyen@yandex.ru" method="post" name="contact_form" enctype="text/plain">
+
+                      <ul>
+
+                          <li>
+                              <h2 class="element-animation">Хотите заказать рейс?</h2>
+                          </li>
+                          <li>
+                              <label class="element-animation">ФИО:</label>
+                              <input type="text" name="name" placeholder="Введите Ваше ФИО" required/>
+                          </li>
+                          <li>
+                              <label class="element-animation">Email:</label>
+                              <input type="text" name="email" placeholder="Введите Ваш email" required  pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})" />
+
+                          </li>
+                          <li>
+                              <label class="element-animation" >Телефон:</label>
+                              <input type="text" name="website" placeholder="Введите Ваш номер телефона с 7" required pattern="(7).+"/>
+
+                          </li>
+                          <li>
+                              <label class="element-animation" >Комментарий:</label>
+                              <textarea name="message" cols="40" rows="6" required > </textarea>
+                          </li>
+                          <li>
+                              <button class="submit element-animation" type="submit">Отправить</button>
+                          </li>
+                      </ul>
+                  </form>
+              </div>
+    </div>
+</div>
+
+  <div id="faq">
+    <div>
+      <span class="title">Оплата</span><br>
+      <span class="heading">Можно-ли оплачивать наличными средствами?</span>
+      <p>Конечно, Вы можете это сделать </p>
+      <span class="heading">Обязательна-ли бронирование?</span>
+      <p>Да, с 2019 года бронирование обязательно, если вы еще не совершили более 10 рейсов</p>
+      <span class="heading">Существует-ли возврат средств, потраченных на бронирование?</span>
+      <p>К сожалению, нет, так как эти деньги идут на заказ топлива и еды</p>
+    </div>
+    <div>
+      <span class="title">Информация</span><br>
+      <span class="heading">Что Вы предлагаете?</span>
+      <p>В «BusinessAir» мы предлагаем выгодную и лучшую стоимость как гарантию того, что у вас есть лучшая сделка на рынке по сравнению с любым другим предложением чартер-брокера на ту же услугу.
+         Наша глобальная сеть дает вам доступ к более чем 10 000 самолетов по всему миру, что дает нам привилегию предлагать вам лучшие услуги и конкурентоспособные решения в отрасли</p>
+      <span class="heading">Не забывайте:</span>
+      <p>Из стоимости аренды исключаются следующие расходы: cтрахование и расходы от военных рисков,любые изменения в маршруте, не ограничиваясь, такие как: дополнительные пассажиры, разбирательство экипажа, посадки, простоя и/или изменение маршрута,противообледенительная обработка самолётов, дополнительные услуги или особые дополнительные пожелания по питанию</p>
+    </div>
+    <div>
+      <span class="title">Гарантии безопасности</span><br>
+      <p>Процессинговый центр CloudPayments защищает и обрабатывает данные Вашей банковской карты по стандарту безопасности PCI DSS 3.2. Передача информации в платежный шлюз происходит с применением технологии шифрования SSL. Дальнейшая передача информации происходит по закрытым банковским сетям, имеющим наивысший уровень надежности. CloudPayments не передает данные Вашей карты нам и иным третьим лицам. Для дополнительной аутентификации держателя карты используется протокол 3D Secure</p>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    function slowScroll(id) {
+      $('html, body').animate({
+        scrollTop: $(id).offset().top
+      }, 500);
+    }
+
+    $(document).on("scroll", function () {
+      if($(window).scrollTop() === 0)
+        $("header").removeClass("fixed");
+      else
+        $("header").attr("class", "fixed");
+    });
+  </script>
+</body>
+</html>
